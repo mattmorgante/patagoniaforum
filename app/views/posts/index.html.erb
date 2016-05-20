@@ -1,4 +1,12 @@
 <% @posts.each do |post| %>
 	<h1><%= post.title %></h1>
 	<h3><%= post.body %></h3>
+	<%= link_to like_post_path(post), method: :put do %>
+		Upvote <%= post.get_upvotes.size %>
+	<% end %>
+
+	<%= link_to dislike_post_path(post), method: :put do %>
+		Downvote <%= post.get_downvotes.size %>
+	<% end %>
+
 <% end %>
