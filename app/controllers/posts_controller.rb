@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:category].blank?
       @posts = Post.all.order("created_at DESC")
@@ -13,19 +15,33 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = Post.new(post_params)
+    # @post.user_id = current_user.id
+
+    if @post.save
+      redirect_to @post
+    else 
+      render "New"
+    end 
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    if @post.update(post_params)
+      redirect_to @post 
+    else
+       render "Edit"
+     end 
   end
 
   def destroy
+    @post.destroy
+    redirect_to root_path
   end
 
   def upvote
@@ -41,7 +57,11 @@ class PostsController < ApplicationController
   end 
 
   private 
-    def expense_params
-      params.require(:post).permit(:title, :body, :category_id)
+    def post_params
+      params.require(:post).permit(:title, :body, :category_id, :user_id)
     end
+
+    def find_post 
+      @post = Post.find(params[:id])
+    end 
 end
