@@ -16,7 +16,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def create
     @post = Post.new(post_params)
-    # @post.user_id = current_user.id
+    @post.user_id = current_user.id
 
     if @post.save
       redirect_to @post
