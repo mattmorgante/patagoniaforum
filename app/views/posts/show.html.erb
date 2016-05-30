@@ -6,6 +6,11 @@
 	<%= link_to dislike_post_path(@post), method: :put do %>
 		Downvote <%= @post.get_downvotes.size %>
 	<% end %>
+
+	<% @post.comments.each do |comment| %>
+		<%= comment.body %><br>
+		<%= comment.user_id %>
+	<% end %>
 <br>
 <%= link_to "Home", root_path %>
 <%= link_to "Edit", edit_post_path %>
