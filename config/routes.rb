@@ -1,12 +1,35 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
+  get 'comments/edit'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
+  get 'comment/create'
+
+  get 'comment/edit'
+
+  get 'comment/update'
+
+  get 'comment/destroy'
+
+  get 'create/edit'
+
+  get 'create/update'
+
+  get 'create/destroy'
+
   devise_for :users
-  resources :posts do 
-    member do 
-      # invoke upvote and downvote methods in controller
-      put "like", to: "posts#upvote"
-      put "dislike", to: "posts#downvote"
-    end 
-  end 
+    resources :posts do 
+      resources :comments
+      member do 
+        # invoke upvote and downvote methods in controller
+        put "like", to: "posts#upvote"
+        put "dislike", to: "posts#downvote"
+      end 
+    end
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
