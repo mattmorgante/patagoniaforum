@@ -41,6 +41,8 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @post.destroy
+    @post.avatar = nil 
+    @post.save
     redirect_to root_path
   end
 
@@ -58,7 +60,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   private 
     def post_params
-      params.require(:post).permit(:title, :body, :category_id, :user_id)
+      params.require(:post).permit(:title, :body, :category_id, :user_id, :avatar)
     end
 
     def find_post 

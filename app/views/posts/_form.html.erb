@@ -1,7 +1,10 @@
-<%= simple_form_for(@post, html: { class: 'form-horizontal'}) do |f| %>
+<%= simple_form_for(@post, html: { multipart: true, class: 'form-horizontal'}) do |f| %>
 
 	<%= f.input :title %>
+  <h4> Give us a brief description of your post here </h4>
+  <%= f.input :blurb %>
 	<%= f.input :body %>
+  <%= f.file_field :avatar %>
 	<%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} %>
 	<br>
 	<br>

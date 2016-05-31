@@ -1,5 +1,6 @@
 	<h1><%= @post.title %></h1>
 	<h3><%= @post.body %></h3>
+	<%= image_tag @post.avatar.url(:medium) %>
 		<%= link_to like_post_path(@post), method: :put do %>
 		Upvote <%= @post.get_upvotes.size %>
 	<% end %>

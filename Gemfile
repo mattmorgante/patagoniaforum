@@ -8,6 +8,7 @@ gem 'awesome_print'
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'acts_as_votable'
+gem 'paperclip'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
