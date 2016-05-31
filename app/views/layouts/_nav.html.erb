@@ -22,7 +22,7 @@
         <ul class="nav navbar-nav navbar-right navbar-link">
           <%if user_signed_in? %>
             <li><%= link_to "New Post", new_post_path %></li>
-            <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "View Profile", current_user_show %></li>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Create Account", new_user_registration_path %></li>
