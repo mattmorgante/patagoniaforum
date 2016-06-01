@@ -7,18 +7,23 @@
 	<%= link_to dislike_post_path(@post), method: :put do %>
 		Downvote <%= @post.get_downvotes.size %>
 	<% end %>
-
+	<br>
+	<h3><%= @post.comments.count %> Comments</h3>
 	<% @post.comments.each do |comment| %>
 		<%= comment.body %><br>
 		<%= comment.user_id %>
 	<% end %>
-<br>
-<%= link_to "Home", root_path %>
-<%= link_to "Edit", edit_post_path %>
-	<% if user_signed_in? %>
-		<% if @post.user_id == current_user.id %>
-			<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
+
+	<h3> Leave a comment 
+		<%= render "comments/form" %>
+	<br>
+	<br>
+	<%= link_to "Home", root_path %>
+		<% if user_signed_in? %>
+			<% if @post.user_id == current_user.id %>
+				<%= link_to "Edit", edit_post_path %>
+				<%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: "Are you sure?"} %>
+			<% end %>
 		<% end %>
-	<% end %>
 
 

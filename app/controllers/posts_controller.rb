@@ -11,7 +11,6 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @post = Post.new
   end
 
   def create
@@ -26,6 +25,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @comment = Comment.new
   end
 
   def edit
