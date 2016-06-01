@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   end 
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(params[:comment].permit(:comment))
+    @comment = @post.comments.create(params[:comment].permit(:comment, :body))
     @comment.user_id = current_user.id if current_user
     @comment.save
 
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
 
-    if @comment.update(params[:comment].permit[:comment])
+    if @comment.update(params[:comment].permit[:comment, :body])
       redirect_to post_path(@post)
     else 
       render 'edit'

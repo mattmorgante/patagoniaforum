@@ -1,4 +1,2 @@
 *** Forum To-Do ***
 
-Need to get name and about to show on User Profile (user#show)
-Comment body doesn't get sent through 

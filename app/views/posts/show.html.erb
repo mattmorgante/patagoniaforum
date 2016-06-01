@@ -10,8 +10,8 @@
 	<br>
 	<h3><%= @post.comments.count %> Comments</h3>
 	<% @post.comments.each do |comment| %>
+		<%= comment.user.name %><br>
 		<%= comment.body %><br>
-		<%= @user.email %>
 	<% end %>
 
 	<h3> Leave a comment 
