@@ -26,6 +26,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   def show
     @comment = Comment.new
+    @user = @comment.user
   end
 
   def edit
@@ -60,7 +61,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   private 
     def post_params
-      params.require(:post).permit(:title, :body, :category_id, :user_id, :avatar)
+      params.require(:post).permit(:title, :body, :category_id, :user_id, :avatar, :blurb)
     end
 
     def find_post 
