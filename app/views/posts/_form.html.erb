@@ -4,6 +4,8 @@
   <h4> Give us a brief description of your post here </h4>
   <%= f.input :blurb %>
 	<%= f.input :body %>
+  Have proof online? Show us a link! 
+  <%= f.input :link %>
   <%= f.file_field :avatar %>
 	<%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} %>
 	<br>

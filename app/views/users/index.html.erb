@@ -2,5 +2,6 @@
 <% @users.each do |user| %>
   <%= user.email %><br>
   <%= user.name %><br>
-  <%= user.about %>
+  <%= user.about %><br>
+  I have submitted <%= user.posts.count %> posts
 <% end %>

@@ -1,2 +1,4 @@
 *** Forum To-Do ***
 
+Display user's name on posts#index page
+

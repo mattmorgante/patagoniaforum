@@ -11,6 +11,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
   end
 
   def new
+    @post = Post.new
   end
 
   def create
@@ -20,7 +21,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
     if @post.save
       redirect_to @post
     else 
-      render "New"
+      render new_post_path
     end 
   end
 
@@ -61,7 +62,7 @@ before_action :find_post, only: [:show, :edit, :update, :destroy]
 
   private 
     def post_params
-      params.require(:post).permit(:title, :body, :category_id, :user_id, :avatar, :blurb)
+      params.require(:post).permit(:title, :body, :category_id, :user_id, :avatar, :blurb, :link)
     end
 
     def find_post 
