@@ -1,7 +1,7 @@
 	<h1><%= @post.title %></h1>
 	<h3><%= @post.body %></h3>
 	<%= @post.link %>
-	<p>Submitted <strong><%= time_ago_in_words(@post.created_at) %></strong> ago by <strong><%= @post.user.name %></strong></p>
+	<p>Submitted <strong><%= time_ago_in_words(@post.created_at) %></strong> ago by <strong><%= @post.user_id %></strong></p>
 	<%= image_tag @post.avatar.url(:medium) %>
 		<%= link_to like_post_path(@post), method: :put do %>
 		Upvote <%= @post.get_upvotes.size %>
@@ -12,7 +12,6 @@
 	<br>
 	<h3><%= @post.comments.count %> Comments</h3>
 	<% @post.comments.each do |comment| %>
-		<%= comment.user.name %><br>
 		<%= comment.body %><br>
 	<% end %>
 
