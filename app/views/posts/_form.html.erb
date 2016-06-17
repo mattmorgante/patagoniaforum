@@ -1,15 +1,37 @@
-<%= simple_form_for(@post, html: { multipart: true, class: 'form-horizontal'}) do |f| %>
+<%= form_for(@post, html: { multipart: true, class: 'form-horizontal'}) do |f| %>
 
-	<%= f.input :title %>
-  <h4> Give us a brief description of your post here </h4>
-  <%= f.input :blurb %>
-	<%= f.input :body %>
-  Have proof online? Show us a link! 
-  <%= f.input :link %>
-  <%= f.file_field :avatar %>
-	<%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} %>
+  <div class= "form-group">
+    <%= f.label :title %> <br>
+	  <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class= "form-group">
+    <h5><strong>A brief description of your post</strong></h5>
+    <%= f.text_field :blurb, class: "form-control" %>
+  </div>
+
+  <div class= "form-group">
+    <%= f.label :body %> <br>
+    <%= f.text_field :body, class: "form-control" %>
+  </div>
+  
+  <br>
+  <div class="form-group">
+    <%= f.label :link %><br>
+    <%= f.text_field :link, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.file_field :avatar %>
+  </div>
+  <br>
+  <div class="form-group">
+	  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category"} %>
+  </div>
 	<br>
 	<br>
-	<%= f.button :submit %>
+  <div class="form-group">
+	  <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+  <br>
 
 <% end %>
